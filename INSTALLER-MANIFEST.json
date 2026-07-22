@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "name": "AI Operating System Installer",
+  "version": "0.1.0",
+  "canonical_repository": "https://github.com/kay833/ai-operating-system-installer",
+  "entrypoints": {
+    "migration": "START-MIGRATION.md",
+    "fresh": "START-FRESH.md"
+  },
+  "shared_manual": "INSTALLER.md",
+  "required_sequence": [
+    "README.md",
+    "selected entrypoint",
+    "INSTALLER-MANIFEST.json",
+    "INSTALLER.md"
+  ],
+  "archive_default": "location-only inventory until the owner explicitly approves a named source and purpose",
+  "completion_requires": [
+    "selected path exit gate",
+    "phase 0 exit test",
+    "phase 1 exit test",
+    "health verification",
+    "clean-room test"
+  ]
+}
