@@ -42,8 +42,11 @@ Before interviewing or building, determine what the current AI can actually acce
 | Reach a private remote host | Verified / blocked / not yet needed | Named repository can be retrieved |
 | Update the chosen workbench | Verified / blocked / not used | Named destination can be retrieved |
 | Use browser or computer controls | Verified / blocked / not needed | Relevant signed-in surface is observable |
+| Read canonical files through each intended provider surface | Verified / blocked / not used | Exact mode retrieves named files from the canonical path |
 
 Do not infer capability from a connected badge, product name, or the learner's subscription. Verify it directly when that capability becomes necessary.
+
+A provider name is not a capability. Standard chat, browser or cloud task mode, coding or repository mode, and desktop local-folder mode may have different tools and permissions even when they share one brand and account. Record and test the exact surface. A failure on one surface does not prove that every surface from that provider is blocked.
 
 Missing capability does not invalidate the method. Complete everything available on the current surface, then create the handoff packet defined below for the next capable AI or for the learner.
 
@@ -637,6 +640,21 @@ Check these separately:
 
 Do not solve these by waiting indefinitely. Identify the failed layer.
 
+### Verify the exact provider surface
+
+For every provider the system may route work to, record the mode as well as the provider:
+
+| Surface class | Typical source path | Proof required |
+|---|---|---|
+| Standard chat | Attached files or enabled connector | Retrieves the named active file |
+| Browser or cloud task | Cloud connectors and browser-visible sources | Retrieves the named source and states whether local files are unavailable |
+| Coding or repository mode | Local clone or private remote repository | Reads the manifest and startup file from the named repository and branch |
+| Desktop local-folder mode | Explicitly attached canonical folder | Reads the manifest and startup file from the exact local path |
+
+Run the read-only clean-room test on each intended surface separately. When permission controls exist, begin with session-only folder access and manual approval. Require file or repository citations, confirm no changes occurred, and record the result as read-verified only. Promote write access only after a separate supervised write-and-receipt test.
+
+Do not copy canonical controls into provider-specific project knowledge to compensate for a blocked surface. That creates a stale duplicate. Route the work to a verified surface or produce the exact handoff.
+
 ## Step 1.7 — Create the machine-readable manifest
 
 The manifest is the fastest safe entry point for a new LLM.
@@ -806,6 +824,8 @@ Report only:
 For every statement, name the active source that supports it. If you cannot determine something, say unknown.
 ```
 
+Repeat this test for every provider surface the router may use. Record the exact surface, source path, permission mode, citations, and whether any files changed. Do not generalize a pass or failure from one surface to another.
+
 Pass conditions:
 
 - Correct system identity.
@@ -900,6 +920,12 @@ and the following are true:
 **Symptom:** Every reply or temporary draft triggers a full governance ceremony.
 
 **Correction:** Use a concise execution receipt for routine work. Reserve registry, changelog, session trace, teaching record, Git checkpoint, and health verification for material system changes.
+
+## Failure 11 — One provider surface mistaken for the whole provider
+
+**Symptom:** A browser or cloud task cannot reach local files, so the AI declares that the provider cannot use the operating system—even though a desktop folder mode or coding mode exists.
+
+**Correction:** Name and test each surface separately. Verify the exact canonical path, permission mode, citations, and no-change result. Promote only the capability actually proven.
 
 ---
 
